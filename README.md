@@ -170,18 +170,6 @@ We welcome contributions to expand the Fault Pattern Library or support new data
 
 Distributed under the **MIT License**. See `LICENSE` for more information.
 
-## � Citation
-
-If you use this framework in your research, please cite our paper:
-
-```bibtex
-@inproceedings{trinh202Xdeterministic,
-  title={Deterministic Fault Injection: Bridging RTL Accuracy and High-Level Simulation Efficiency for Systolic Arrays},
-  author={Trinh, Vu Dang Nguyen and Fellouh, Ayoub and Mohamed, Otmane Ait and Ghaffari, Fakhreddine},
-  booktitle={Proceedings of the IEEE/ACM International Conference on...},
-  year={202X}
-}
-```
 
 ---
 <p align="center">
