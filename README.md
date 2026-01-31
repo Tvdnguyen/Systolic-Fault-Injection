@@ -90,6 +90,32 @@ To handle the massive computational load of exhaustive injection, all scripts em
 -   **Streaming Inputs**: Inputs are streamed horizontally with a skew.
 -   **Active Cycle Maps**: Crucially, the script relies on `active_cycles_map_ws_{layer}.json`, a pre-computed dictionary that defines the exact `[Start, End]` cycle window for every PE, derived from Phase 1 profiling.
 
+## 🔧 Customization & Scalability
+
+This framework is designed to be **Model-Agnostic** and **Hardware-Scalable**.
+
+### 1. Verification for Arbitrary Models
+You generally **do not** need to rewrite the simulation drivers to test different neural networks.
+-   **Step 1**: Define your PyTorch model in `traffic_sign_net_small.py` (or import your own).
+-   **Step 2**: Ensure the model exposes standard `nn.Conv2d` or `nn.Linear` layers.
+-   **Step 3**: The campaign scripts (`run_fault_campaign_*.py`) automatically extract layer dimensions ($C_{in}, C_{out}, H, W$) to generate appropriate test vectors.
+
+### 2. Parametric hardware
+-   **Systolic Array Size**: The array dimension `N` (default 8x8) is a configurable parameter.
+    -   In Python: Update `N = 16` in the config section of the campaign script.
+    -   In Verilog: Update `parameter N = 16;` in the top-level testbench.
+-   **PE Precision**: The framework supports variable bit-widths (default 8-bit integer) by modifying the RTL parameters.
+
+## 🧪 Case Study: Traffic Sign Recognition
+
+To demonstrate the efficacy of this framework, we conducted a comprehensive case study using a **Traffic Sign Recognition Network** (GTSRB dataset) as detailed in the associated paper.
+
+-   **Target Model**: A quantized CNN (Conv-Pool-Conv structure) optimized for edge FPGAs.
+-   **The "Validity Gap"**: Using traditional random fault injection, we observed that:
+    -   **78%** of injected faults occurred during idle/invalid cycles (active-low `valid` signals or bubbles), resulting in no functional impact.
+    -   Only **22%** of random samples represented valid architectural failure modes.
+-   **Our Result**: By using this framework's **Active Cycle Profiling**, we achieved **100% injection validity**, reducing the required simulation time by **6×** while maintaining specific statistical confidence levels ($99\% \pm 1\%$).
+
 
 
 ## 🚀 Installation
