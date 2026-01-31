@@ -1,0 +1,23 @@
+# System
+.DS_Store
+*.log
+tcl_console.txt
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Simulation Artifacts
+tmp_workers/
+tmp_workers_os/
+fault_data_*/
+output_*.txt
+*.vcd
+sim_campaign_*
+sim_verify_*
+sim_profile_*
+sim_calib
+
+# Generated Memory Files (Keep root ones if examples, but ignore generated)
+# Assuming scripts generate to tmp_workers, so root .mem might be safe to keep as templates.
+# If unsure, we can ignore specific generated patterns if they clutter root.
