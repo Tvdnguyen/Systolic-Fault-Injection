@@ -119,11 +119,8 @@ Targeting input-reuse workloads.
 
 ```bash
 cd systolic_RTL_simulator_IS
-# Run basic verification
-python run_fault_campaign_ver10_is.py
-
-# Run full fault injection (generates pattern library)
-python run_fault_campaign_ver10_is.py --inject True --samples 10000
+# Run exhaustive fault injection for Layer Conv1
+python3 run_fault_campaign_ver10_is.py --layer conv1 --exhaustive
 ```
 
 ### 2. Output Stationary (OS) Campaign
@@ -131,7 +128,8 @@ Targeting partial-sum accumulation.
 
 ```bash
 cd systolic_RTL_simulator_OS
-python run_fault_campaign_ver10_os.py --inject True
+# Run exhaustive fault injection for Layer Conv1
+python3 run_fault_campaign_ver10_os.py --layer conv1 --exhaustive
 ```
 
 ### 3. Weight Stationary (WS) Campaign
@@ -139,7 +137,8 @@ Targeting weight-reuse efficiency.
 
 ```bash
 cd systolic_RTL_simulator_WS
-python run_fault_campaign_ver10_ws.py
+# Run exhaustive fault injection for Layer Conv1
+python3 run_fault_campaign_ver10.py --layer conv1 --exhaustive
 ```
 
 ## 📂 Folder Structure
