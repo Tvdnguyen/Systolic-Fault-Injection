@@ -103,7 +103,7 @@ To handle the massive computational load of exhaustive injection, all scripts em
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/SystolicArray_FPGA.git
+git clone https://github.com/Tvdnguyen/Systolic-Fault-Injection.git
 cd SystolicArray_FPGA/ver10
 
 # Install dependencies
